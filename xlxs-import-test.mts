@@ -32,7 +32,7 @@ const
 
     workbook: XLSX.WorkBook = XLSX.readFile(filePath, { cellDates: true} ),
     denseWorkbook: XLSX.WorkBook = XLSX.readFile(filePath, { dense: true, cellDates: true }),
-
+    
     worksheet: XLSX.WorkSheet = workbook.Sheets["original_dates"],
     denseWorksheet: XLSX.WorkSheet = denseWorkbook.Sheets["original_dates"];
 
@@ -45,7 +45,7 @@ const
  * @returns {Table | undefined} - აბრუნებს ან ცხრილს ან განუსაზღვრელ მნიშვნელობას.
  */
 function presentWorksheetWithSheet_to_json(ws: XLSX.WorkSheet):  Table | undefined {
-    const data: Table['records'] | undefined = XLSX.utils.sheet_to_json(ws, { header: 1 });
+    const data: Table['records'] | undefined = XLSX.utils.sheet_to_json(ws, { header: 1, UTC: true});
     return dataFromater(data);
 }
 
